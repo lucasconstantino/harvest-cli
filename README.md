@@ -1,35 +1,79 @@
-# Node Library Boilerplate
+# harvest-cli
 
-[![npm version](https://img.shields.io/npm/v/node-contrib-boilerplate.svg?style=flat-square)](https://www.npmjs.com/package/node-contrib-boilerplate)
-[![Downloads/week](https://img.shields.io/npm/dw/node-contrib-boilerplate.svg)](https://npmjs.org/package/node-contrib-boilerplate)
-[![License](https://img.shields.io/npm/l/node-contrib-boilerplate.svg)](https://github.com/lucasconstantino/node-contrib-boilerplate/blob/master/package.json)
-[![build status](https://img.shields.io/travis/lucasconstantino/node-contrib-boilerplate/master.svg?style=flat-square)](https://travis-ci.org/lucasconstantino/node-contrib-boilerplate)
-[![coverage](https://img.shields.io/codecov/c/github/lucasconstantino/node-contrib-boilerplate.svg?style=flat-square)](https://codecov.io/github/lucasconstantino/node-contrib-boilerplate)
+Harvest logging CLI
 
-**A boilerplate for node-focused open-source libraries.**
+[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
+[![Version](https://img.shields.io/npm/v/harvest-cli.svg)](https://npmjs.org/package/harvest-cli)
+[![Downloads/week](https://img.shields.io/npm/dw/harvest-cli.svg)](https://npmjs.org/package/harvest-cli)
+[![License](https://img.shields.io/npm/l/harvest-cli.svg)](https://github.com/lucasconstantino/harvest-cli/blob/master/package.json)
 
-This boilerplate is the starting point for [Lucas's](https://github.com/lucasconstantino) node targeted open-source libraries.
+<!-- toc -->
 
----
+- [Usage](#usage)
+- [Commands](#commands)
+  <!-- tocstop -->
 
-## Motivation
+# Usage
 
-[explain why] Everytime I needed to start a new open-source project focused on Node applications I had to go over the same setup all over again. Linting, testing, QA setup, compiling, etc, etc. This boilerplate aims to reduce this setup overhead by providing a ground-zero starting point for my own libraries - and for those who my enjoy it as well.
+<!-- usage -->
 
-## Usage
+```sh-session
+$ npm install -g harvest-cli
+$ harvest COMMAND
+running command...
+$ harvest (-v|--version|version)
+harvest-cli/0.1.0 linux-x64 node-v10.5.0
+$ harvest --help [COMMAND]
+USAGE
+  $ harvest COMMAND
+...
+```
 
-> Clone this project, re-initialize Git, and go on with your life. The following is just to keep an example for future libraries ;)
+<!-- usagestop -->
 
-### Installation
+# Commands
+
+<!-- commands -->
+
+- [harvest-cli](#harvest-cli)
+- [Usage](#usage)
+- [Commands](#commands)
+  - [`harvest hello`](#harvest-hello)
+  - [`harvest help [COMMAND]`](#harvest-help-command)
+
+## `harvest hello`
+
+Describe the command here
 
 ```
-npm i node-contrib-boilerplate
+USAGE
+  $ harvest hello
+
+OPTIONS
+  -n, --name=name  name to print
+
+DESCRIPTION
+  ...
+  Extra documentation goes here
 ```
 
-### Usage
+_See code: [src/commands/hello.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.0/src/commands/hello.js)_
 
-```js
-import library from 'node-library-boilerplate'
+## `harvest help [COMMAND]`
 
-// sample usage...
+display help for harvest
+
 ```
+USAGE
+  $ harvest help [COMMAND]
+
+ARGUMENTS
+  COMMAND  command to show help for
+
+OPTIONS
+  --all  see all commands in CLI
+```
+
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.1.6/src/commands/help.ts)_
+
+<!-- commandsstop -->

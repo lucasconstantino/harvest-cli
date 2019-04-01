@@ -3,3 +3,6 @@ node_modules
 .env
 tmp
 coverage
+*-debug.log
+*-error.log
+/.nyc_output

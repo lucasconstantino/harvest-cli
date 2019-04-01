@@ -1,20 +1,40 @@
 {
-  "name": "node-library-boilerplate",
-  "version": "1.0.0",
+  "name": "harvest-cli",
+  "version": "0.1.0",
   "private": false,
-  "description": "A boilerplate for node-focused open-source libraries.",
+  "description": "Harvest logging CLI",
+  "keywords": [
+    "harvest",
+    "oclif",
+    "time-tracking"
+  ],
+  "homepage": "https://github.com/lucasconstantino/harvest-cli",
+  "bugs": "https://github.com/lucasconstantino/harvest-cli/issues",
+  "repository": "lucasconstantino/harvest-cli",
   "license": "MIT",
   "author": "Lucas Constantino Silva <lucasconstantinosilva@gmail.com>",
+  "files": [
+    "/bin",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
+    "/src"
+  ],
   "main": "lib/index.js",
+  "bin": {
+    "harvest": "./bin/run"
+  },
   "scripts": {
     "compile": "babel src -d lib --ignore src/**/*.test.js",
     "lint": "eslint src",
+    "prepack": "oclif-dev manifest && oclif-dev readme",
+    "postpack": "rm -f oclif.manifest.json",
     "precommit": "lint-staged",
     "prepush": "yarn qa",
     "prepublish": "yarn qa && yarn compile",
     "qa": "yarn test && yarn lint",
     "release": "standard-version",
-    "test": "jest src"
+    "test": "jest src",
+    "version": "oclif-dev readme && git add README.md"
   },
   "lint-staged": {
     "*.js": [
@@ -40,21 +60,38 @@
       }
     }
   },
+  "dependencies": {
+    "@oclif/command": "^1",
+    "@oclif/config": "^1",
+    "@oclif/plugin-help": "^2"
+  },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.3",
     "@babel/preset-env": "^7.3.1",
+    "@oclif/dev-cli": "^1",
     "eslint": "^5.14.1",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
+    "globby": "^8",
     "husky": "^1.3.1",
     "jest": "^24.1.0",
     "lint-staged": "^8.1.4",
     "prettier-eslint-cli": "^4.7.1",
     "sort-package-json": "^1.19.0",
     "standard-version": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "harvest",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
   }
 }

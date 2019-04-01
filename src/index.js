@@ -1,1 +1,1 @@
-// your lib main exports go here
+module.exports = require('@oclif/command')
