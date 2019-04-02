@@ -1,6 +1,6 @@
 {
   "name": "harvest-cli",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": false,
   "description": "Harvest logging CLI",
   "keywords": [
@@ -34,7 +34,7 @@
     "qa": "yarn test && yarn lint",
     "release": "standard-version",
     "test": "jest src",
-    "version": "oclif-dev readme && git add README.md"
+    "version": "oclif-dev readme"
   },
   "lint-staged": {
     "*.js": [
