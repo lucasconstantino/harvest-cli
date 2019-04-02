@@ -8,8 +8,16 @@ import { prompt, validator } from '../prompt'
 import { getConfig, saveConfig } from '../config'
 import { getClient } from './client'
 
-const prefix = i => (i === 1 ? '\n\n   ' : i > 1 ? '\n   ' : '')
-const format = (arg, i) => (typeof arg === 'string' ? prefix(i) + arg : arg)
+const prefix = i => (i === 1 ? '\n\n' : i > 1 ? '\n' : '')
+
+const indent = (i, text) =>
+  text
+    .split('\n')
+    .map(line => (i > 0 ? '   ' : '') + line)
+    .join('\n')
+
+const format = (arg, i) =>
+  typeof arg === 'string' ? prefix(i) + indent(i, arg) : indent(i, arg)
 
 /**
  * Base Harvest connecting commands.
@@ -17,7 +25,7 @@ const format = (arg, i) => (typeof arg === 'string' ? prefix(i) + arg : arg)
 export class HarvestCommand extends Command {
   /* eslint-disable no-sequences */
   info = (...args) => (this.newLine(), log.info(...args.map(format)))
-  log = (...args) => (this.newLine(), log.log(...args))
+  log = (...args) => (this.newLine(), log.log(...args.map(format)))
   error = (...args) => (this.newLine(), log.error(...args.map(format)))
   warn = (...args) => (this.newLine(), log.warn(...args.map(format)))
   /* eslint-enable no-sequences */

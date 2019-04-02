@@ -1,7 +1,8 @@
-import { flags } from '@oclif/command'
 import cli from 'cli-ux'
 import { number } from 'yup'
+import git from 'simple-git/promise'
 import emojic from 'emojic'
+import chalk from 'chalk'
 
 import { HarvestCommand } from '~lib/harvest'
 import { prompt, validator } from '~lib/prompt'
@@ -13,15 +14,49 @@ const projectToChoice = value => ({
 
 const taskToChoice = value => ({ name: value, message: value.task.name })
 
-class LogCreateCommand extends HarvestCommand {
+class LogGitCommand extends HarvestCommand {
   async run () {
+    const {
+      args: { ref }
+    } = this.parse(LogGitCommand)
+
+    const [from, to] = ref.split('..')
+
+    const repo = git(process.cwd())
+    const commits = (await repo.log({ from, to: to || 'HEAD' })).all
+
+    const messages = commits.map(({ message }) => message)
+    const notes = messages.join('\n')
+
+    this.log(
+      chalk.bold(
+        `You selected ${messages.length} commit messages to use as notes:`
+      ),
+      notes
+    )
+
+    const { confirm } = await prompt({
+      type: 'confirm',
+      name: 'confirm',
+      message: 'Does it look good to you?'
+    })
+
+    if (!confirm) {
+      this.log('Please, try again then!')
+      this.exit()
+    }
+
+    this.log('Ok, lets continue then')
+
+    this.newLine()
+
     cli.action.start('Loading your projects and tasks')
 
     const projects = await this.loadProjects()
 
     cli.action.stop('done!')
 
-    const { project, task, hours, notes } = await prompt([
+    const { project, task, hours } = await prompt([
       {
         type: 'select',
         pageSize: 20,
@@ -50,11 +85,6 @@ class LogCreateCommand extends HarvestCommand {
             .required()
         ),
         result: Number
-      },
-      {
-        type: 'input',
-        name: 'notes',
-        message: 'Notes (optional)'
       }
     ])
 
@@ -95,9 +125,18 @@ class LogCreateCommand extends HarvestCommand {
   }
 }
 
-LogCreateCommand.description = `Log time
+LogGitCommand.description = `Log from Git
 ...
-Registers a new time-tracking log
+Registers a new time-tracking log using Git commit messages as notes
 `
 
-export default LogCreateCommand
+LogGitCommand.args = [
+  {
+    name: 'ref',
+    required: true,
+    description: 'a valid git reference to use as source',
+    default: 'HEAD^..HEAD'
+  }
+]
+
+export default LogGitCommand
