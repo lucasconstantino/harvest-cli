@@ -8,14 +8,21 @@ Unofficial Harvest CLI focused on time-tracking creation.
 [![License](https://img.shields.io/npm/l/harvest-cli.svg)](https://github.com/lucasconstantino/harvest-cli/blob/master/package.json)
 
 <!-- toc -->
-* [harvest-cli](#harvest-cli)
-* [Usage](#usage)
-* [Commands](#commands)
-<!-- tocstop -->
+
+- [harvest-cli](#harvest-cli)
+- [Usage](#usage)
+- [Commands](#commands)
+  - [`harvest help [COMMAND]`](#harvest-help-command)
+  - [`harvest log`](#harvest-log)
+  - [`harvest log:git REF`](#harvest-loggit-ref)
+  - [`harvest log:list`](#harvest-loglist)
+  - [Not official](#not-official)
+    <!-- tocstop -->
 
 # Usage
 
 <!-- usage -->
+
 ```sh-session
 $ npm install -g harvest-cli
 $ harvest COMMAND
@@ -27,15 +34,21 @@ USAGE
   $ harvest COMMAND
 ...
 ```
+
 <!-- usagestop -->
 
 # Commands
 
 <!-- commands -->
-* [`harvest help [COMMAND]`](#harvest-help-command)
-* [`harvest log`](#harvest-log)
-* [`harvest log:git REF`](#harvest-loggit-ref)
-* [`harvest log:list`](#harvest-loglist)
+
+- [harvest-cli](#harvest-cli)
+- [Usage](#usage)
+- [Commands](#commands)
+  - [`harvest help [COMMAND]`](#harvest-help-command)
+  - [`harvest log`](#harvest-log)
+  - [`harvest log:git REF`](#harvest-loggit-ref)
+  - [`harvest log:list`](#harvest-loglist)
+  - [Not official](#not-official)
 
 ## `harvest help [COMMAND]`
 
@@ -67,6 +80,8 @@ DESCRIPTION
   Registers a new time-tracking log
 ```
 
+![log](docs/first-log.gif)
+
 _See code: [lib/commands/log/index.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.10/lib/commands/log/index.js)_
 
 ## `harvest log:git REF`
@@ -84,6 +99,8 @@ DESCRIPTION
   ...
   Registers a new time-tracking log using Git commit messages as notes
 ```
+
+![log](docs/log:git.gif)
 
 _See code: [lib/commands/log/git.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.10/lib/commands/log/git.js)_
 
@@ -111,7 +128,10 @@ DESCRIPTION
   Lists time-tracking log entries
 ```
 
+![log](docs/log:list.gif)
+
 _See code: [lib/commands/log/list.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.10/lib/commands/log/list.js)_
+
 <!-- commandsstop -->
 
 ## Not official
