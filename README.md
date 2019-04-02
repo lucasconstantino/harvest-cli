@@ -21,7 +21,7 @@ $ npm install -g harvest-cli
 $ harvest COMMAND
 running command...
 $ harvest (-v|--version|version)
-harvest-cli/0.1.1 linux-x64 node-v10.5.0
+harvest-cli/0.1.3 linux-x64 node-v10.5.0
 $ harvest --help [COMMAND]
 USAGE
   $ harvest COMMAND
@@ -68,7 +68,7 @@ DESCRIPTION
   Registers a new time-tracking log
 ```
 
-_See code: [lib/commands/log/index.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.1/lib/commands/log/index.js)_
+_See code: [lib/commands/log/index.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.3/lib/commands/log/index.js)_
 
 ## `harvest log:create`
 
@@ -83,7 +83,7 @@ DESCRIPTION
   Registers a new time-tracking log
 ```
 
-_See code: [lib/commands/log/create.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.1/lib/commands/log/create.js)_
+_See code: [lib/commands/log/create.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.3/lib/commands/log/create.js)_
 
 ## `harvest log:git REF`
 
@@ -101,7 +101,7 @@ DESCRIPTION
   Registers a new time-tracking log using Git commit messages as notes
 ```
 
-_See code: [lib/commands/log/git.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.1/lib/commands/log/git.js)_
+_See code: [lib/commands/log/git.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.3/lib/commands/log/git.js)_
 
 ## `harvest log:list`
 
@@ -127,5 +127,5 @@ DESCRIPTION
   Lists time-tracking log entries
 ```
 
-_See code: [lib/commands/log/list.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.1/lib/commands/log/list.js)_
+_See code: [lib/commands/log/list.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.3/lib/commands/log/list.js)_
 <!-- commandsstop -->

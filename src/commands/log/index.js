@@ -1,4 +1,3 @@
-import { flags } from '@oclif/command'
 import cli from 'cli-ux'
 import { number } from 'yup'
 import emojic from 'emojic'
