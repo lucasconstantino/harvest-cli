@@ -17,7 +17,7 @@
     "/bin",
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json",
-    "/src"
+    "/lib"
   ],
   "main": "lib/index.js",
   "bin": {
@@ -32,7 +32,7 @@
     "prepush": "yarn qa",
     "prepublish": "yarn qa && yarn compile",
     "qa": "yarn test && yarn lint",
-    "release": "standard-version",
+    "release": "yarn compile && standard-version",
     "test": "echo 'No tests implemented yet'",
     "version": "oclif-dev readme"
   },
