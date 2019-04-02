@@ -2,7 +2,7 @@
   "name": "harvest-cli",
   "version": "0.1.3",
   "private": false,
-  "description": "Harvest logging CLI",
+  "description": "Unofficial Harvest CLI focused on time-tracking creation",
   "keywords": [
     "harvest",
     "oclif",

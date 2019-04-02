@@ -1,6 +1,6 @@
 # harvest-cli
 
-Harvest logging CLI
+Unofficial Harvest CLI focused on time-tracking creation.
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/harvest-cli.svg)](https://npmjs.org/package/harvest-cli)
@@ -8,14 +8,21 @@ Harvest logging CLI
 [![License](https://img.shields.io/npm/l/harvest-cli.svg)](https://github.com/lucasconstantino/harvest-cli/blob/master/package.json)
 
 <!-- toc -->
-* [harvest-cli](#harvest-cli)
-* [Usage](#usage)
-* [Commands](#commands)
-<!-- tocstop -->
+
+- [harvest-cli](#harvest-cli)
+- [Usage](#usage)
+- [Commands](#commands)
+  - [`harvest help [COMMAND]`](#harvest-help-command)
+  - [`harvest log`](#harvest-log)
+  - [`harvest log:create`](#harvest-logcreate)
+  - [`harvest log:git REF`](#harvest-loggit-ref)
+  - [`harvest log:list`](#harvest-loglist)
+    <!-- tocstop -->
 
 # Usage
 
 <!-- usage -->
+
 ```sh-session
 $ npm install -g harvest-cli
 $ harvest COMMAND
@@ -27,16 +34,21 @@ USAGE
   $ harvest COMMAND
 ...
 ```
+
 <!-- usagestop -->
 
 # Commands
 
 <!-- commands -->
-* [`harvest help [COMMAND]`](#harvest-help-command)
-* [`harvest log`](#harvest-log)
-* [`harvest log:create`](#harvest-logcreate)
-* [`harvest log:git REF`](#harvest-loggit-ref)
-* [`harvest log:list`](#harvest-loglist)
+
+- [harvest-cli](#harvest-cli)
+- [Usage](#usage)
+- [Commands](#commands)
+  - [`harvest help [COMMAND]`](#harvest-help-command)
+  - [`harvest log`](#harvest-log)
+  - [`harvest log:create`](#harvest-logcreate)
+  - [`harvest log:git REF`](#harvest-loggit-ref)
+  - [`harvest log:list`](#harvest-loglist)
 
 ## `harvest help [COMMAND]`
 
@@ -128,4 +140,5 @@ DESCRIPTION
 ```
 
 _See code: [lib/commands/log/list.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.3/lib/commands/log/list.js)_
+
 <!-- commandsstop -->
