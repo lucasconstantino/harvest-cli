@@ -17,6 +17,7 @@ Unofficial Harvest CLI focused on time-tracking creation.
   - [`harvest log:create`](#harvest-logcreate)
   - [`harvest log:git REF`](#harvest-loggit-ref)
   - [`harvest log:list`](#harvest-loglist)
+  - [Not official](#not-official)
     <!-- tocstop -->
 
 # Usage
@@ -28,7 +29,7 @@ $ npm install -g harvest-cli
 $ harvest COMMAND
 running command...
 $ harvest (-v|--version|version)
-harvest-cli/0.1.3 linux-x64 node-v10.5.0
+harvest-cli/0.1.4 linux-x64 node-v10.5.0
 $ harvest --help [COMMAND]
 USAGE
   $ harvest COMMAND
@@ -49,6 +50,7 @@ USAGE
   - [`harvest log:create`](#harvest-logcreate)
   - [`harvest log:git REF`](#harvest-loggit-ref)
   - [`harvest log:list`](#harvest-loglist)
+  - [Not official](#not-official)
 
 ## `harvest help [COMMAND]`
 
@@ -80,7 +82,7 @@ DESCRIPTION
   Registers a new time-tracking log
 ```
 
-_See code: [lib/commands/log/index.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.3/lib/commands/log/index.js)_
+_See code: [lib/commands/log/index.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.4/lib/commands/log/index.js)_
 
 ## `harvest log:create`
 
@@ -95,7 +97,7 @@ DESCRIPTION
   Registers a new time-tracking log
 ```
 
-_See code: [lib/commands/log/create.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.3/lib/commands/log/create.js)_
+_See code: [lib/commands/log/create.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.4/lib/commands/log/create.js)_
 
 ## `harvest log:git REF`
 
@@ -113,7 +115,7 @@ DESCRIPTION
   Registers a new time-tracking log using Git commit messages as notes
 ```
 
-_See code: [lib/commands/log/git.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.3/lib/commands/log/git.js)_
+_See code: [lib/commands/log/git.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.4/lib/commands/log/git.js)_
 
 ## `harvest log:list`
 
@@ -139,6 +141,10 @@ DESCRIPTION
   Lists time-tracking log entries
 ```
 
-_See code: [lib/commands/log/list.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.3/lib/commands/log/list.js)_
+_See code: [lib/commands/log/list.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.4/lib/commands/log/list.js)_
 
 <!-- commandsstop -->
+
+## Not official
+
+This project is _not official_, has no participation from the [Harvest](https://www.getharvest.com/) team, has to commercial purpose, and cannot respond for issues related to the Harvest company. If you work at Harvest and think this project is anyhow inappropriate, please contact me. Also, if you work at Harvest and think you can benefit from the name `harvest-cli`, also contact me and I'll be glad to make it available.
