@@ -16,7 +16,7 @@ Unofficial Harvest CLI focused on time-tracking creation.
   - [`harvest log`](#harvest-log)
   - [`harvest log:git REF`](#harvest-loggit-ref)
   - [`harvest log:list`](#harvest-loglist)
-  - [Not official](#not-official)
+- [Not official](#not-official)
     <!-- tocstop -->
 
 # Usage
@@ -48,7 +48,7 @@ USAGE
   - [`harvest log`](#harvest-log)
   - [`harvest log:git REF`](#harvest-loggit-ref)
   - [`harvest log:list`](#harvest-loglist)
-  - [Not official](#not-official)
+- [Not official](#not-official)
 
 ## `harvest help [COMMAND]`
 
@@ -134,6 +134,6 @@ _See code: [lib/commands/log/list.js](https://github.com/lucasconstantino/harves
 
 <!-- commandsstop -->
 
-## Not official
+# Not official
 
 This project is _not official_, has no participation from the [Harvest](https://www.getharvest.com/) team, has to commercial purpose, and cannot respond for issues related to the Harvest company. If you work at Harvest and think this project is anyhow inappropriate, please contact me. Also, if you work at Harvest and think you can benefit from the name `harvest-cli`, also contact me and I'll be glad to make it available.
