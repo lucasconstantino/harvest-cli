@@ -110,4 +110,10 @@ export class HarvestCommand extends Command {
 
     return getConfig()
   }
+
+  loadProjects = () =>
+    this.harvest.projectAssignments
+      .me()
+      // eslint-disable-next-line camelcase
+      .then(({ project_assignments }) => project_assignments)
 }

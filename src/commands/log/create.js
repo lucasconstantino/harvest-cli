@@ -93,12 +93,6 @@ class LogCreateCommand extends HarvestCommand {
       this.error(err)
     }
   }
-
-  loadProjects = () =>
-    this.harvest.projectAssignments
-      .me()
-      // eslint-disable-next-line camelcase
-      .then(({ project_assignments }) => project_assignments)
 }
 
 LogCreateCommand.description = `Log time
