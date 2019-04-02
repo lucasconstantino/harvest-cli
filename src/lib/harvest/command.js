@@ -6,7 +6,7 @@ import { string } from 'yup'
 import log from '../logger'
 import { prompt, validator } from '../prompt'
 import { getConfig, saveConfig } from '../config'
-import { getClient } from './'
+import { getClient } from './client'
 
 const prefix = i => (i === 1 ? '\n\n   ' : i > 1 ? '\n   ' : '')
 const format = (arg, i) => (typeof arg === 'string' ? prefix(i) + arg : arg)
@@ -14,7 +14,7 @@ const format = (arg, i) => (typeof arg === 'string' ? prefix(i) + arg : arg)
 /**
  * Base Harvest connecting commands.
  */
-export default class HarvestCommand extends Command {
+export class HarvestCommand extends Command {
   /* eslint-disable no-sequences */
   info = (...args) => (this.newLine(), log.info(...args.map(format)))
   log = (...args) => (this.newLine(), log.log(...args))

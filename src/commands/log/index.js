@@ -3,8 +3,8 @@ import cli from 'cli-ux'
 import { number } from 'yup'
 import emojic from 'emojic'
 
-import HarvestCommand from '../lib/harvest/command'
-import { prompt, validator } from '../lib/prompt'
+import { HarvestCommand } from '~lib/harvest'
+import { prompt, validator } from '~lib/prompt'
 
 const projectToChoice = value => ({
   name: value,
