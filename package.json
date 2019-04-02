@@ -1,6 +1,6 @@
 {
   "name": "harvest-cli",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "private": false,
   "description": "Unofficial Harvest CLI focused on time-tracking creation",
   "keywords": [
