@@ -101,6 +101,11 @@
     "bin": "harvest",
     "plugins": [
       "@oclif/plugin-help"
-    ]
+    ],
+    "topics": {
+      "log": {
+        "description": "manage time-tracking logs"
+      }
+    }
   }
 }
