@@ -63,7 +63,9 @@
   "dependencies": {
     "@oclif/command": "^1",
     "@oclif/config": "^1",
-    "@oclif/plugin-help": "^2"
+    "@oclif/plugin-help": "^2",
+    "harvest": "^2.2.5",
+    "inquirer": "^6.2.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
