@@ -1,8 +1,8 @@
-lib
+/lib
+/coverage
+/.nyc_output
+tmp
 node_modules
 .env
-tmp
-coverage
 *-debug.log
 *-error.log
-/.nyc_output
