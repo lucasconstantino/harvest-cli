@@ -1,7 +1,7 @@
 import { Command, flags } from '@oclif/command'
 import cli from 'cli-ux'
 import inquirer from 'inquirer'
-import { authenticate } from '../lib/auth'
+import { authenticate } from '../lib/harvest'
 
 class LogCommand extends Command {
   async run () {
