@@ -8,56 +8,35 @@ Harvest logging CLI
 [![License](https://img.shields.io/npm/l/harvest-cli.svg)](https://github.com/lucasconstantino/harvest-cli/blob/master/package.json)
 
 <!-- toc -->
-
-- [Usage](#usage)
-- [Commands](#commands)
-  <!-- tocstop -->
+* [harvest-cli](#harvest-cli)
+* [Usage](#usage)
+* [Commands](#commands)
+<!-- tocstop -->
 
 # Usage
 
 <!-- usage -->
-
 ```sh-session
 $ npm install -g harvest-cli
 $ harvest COMMAND
 running command...
 $ harvest (-v|--version|version)
-harvest-cli/0.1.0 linux-x64 node-v10.5.0
+harvest-cli/0.1.1 linux-x64 node-v10.5.0
 $ harvest --help [COMMAND]
 USAGE
   $ harvest COMMAND
 ...
 ```
-
 <!-- usagestop -->
 
 # Commands
 
 <!-- commands -->
-
-- [harvest-cli](#harvest-cli)
-- [Usage](#usage)
-- [Commands](#commands)
-  - [`harvest hello`](#harvest-hello)
-  - [`harvest help [COMMAND]`](#harvest-help-command)
-
-## `harvest hello`
-
-Describe the command here
-
-```
-USAGE
-  $ harvest hello
-
-OPTIONS
-  -n, --name=name  name to print
-
-DESCRIPTION
-  ...
-  Extra documentation goes here
-```
-
-_See code: [src/commands/hello.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.0/src/commands/hello.js)_
+* [`harvest help [COMMAND]`](#harvest-help-command)
+* [`harvest log`](#harvest-log)
+* [`harvest log:create`](#harvest-logcreate)
+* [`harvest log:git REF`](#harvest-loggit-ref)
+* [`harvest log:list`](#harvest-loglist)
 
 ## `harvest help [COMMAND]`
 
@@ -76,4 +55,77 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.1.6/src/commands/help.ts)_
 
+## `harvest log`
+
+Log time
+
+```
+USAGE
+  $ harvest log
+
+DESCRIPTION
+  ...
+  Registers a new time-tracking log
+```
+
+_See code: [lib/commands/log/index.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.1/lib/commands/log/index.js)_
+
+## `harvest log:create`
+
+Log time
+
+```
+USAGE
+  $ harvest log:create
+
+DESCRIPTION
+  ...
+  Registers a new time-tracking log
+```
+
+_See code: [lib/commands/log/create.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.1/lib/commands/log/create.js)_
+
+## `harvest log:git REF`
+
+Log from Git
+
+```
+USAGE
+  $ harvest log:git REF
+
+ARGUMENTS
+  REF  [default: HEAD^..HEAD] a valid git reference to use as source
+
+DESCRIPTION
+  ...
+  Registers a new time-tracking log using Git commit messages as notes
+```
+
+_See code: [lib/commands/log/git.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.1/lib/commands/log/git.js)_
+
+## `harvest log:list`
+
+List
+
+```
+USAGE
+  $ harvest log:list
+
+OPTIONS
+  -x, --extended       show extra columns
+  --columns=columns    only show provided columns (comma-separated)
+  --csv                output is csv format
+  --filter=filter      filter property by partial string matching, ex: name=foo
+  --no-header          hide table header from output
+  --no-truncate        do not truncate output to fit screen
+  --page=page          [default: 1] page to load
+  --per-page=per-page  [default: 10] entries per page
+  --sort=sort          property to sort by (prepend '-' for descending)
+
+DESCRIPTION
+  ...
+  Lists time-tracking log entries
+```
+
+_See code: [lib/commands/log/list.js](https://github.com/lucasconstantino/harvest-cli/blob/v0.1.1/lib/commands/log/list.js)_
 <!-- commandsstop -->
