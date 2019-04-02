@@ -17,7 +17,7 @@ const format = (arg, i) => (typeof arg === 'string' ? prefix(i) + arg : arg)
 export default class HarvestCommand extends Command {
   /* eslint-disable no-sequences */
   info = (...args) => (this.newLine(), log.info(...args.map(format)))
-  log = (...args) => (this.newLine(), this.info(...args))
+  log = (...args) => (this.newLine(), log.log(...args))
   error = (...args) => (this.newLine(), log.error(...args.map(format)))
   warn = (...args) => (this.newLine(), log.warn(...args.map(format)))
   /* eslint-enable no-sequences */
