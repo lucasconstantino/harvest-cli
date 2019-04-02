@@ -64,8 +64,15 @@
     "@oclif/command": "^1",
     "@oclif/config": "^1",
     "@oclif/plugin-help": "^2",
+    "chalk": "^2.4.2",
+    "emojic": "^1.1.15",
+    "enquirer": "^2.3.0",
+    "figures": "^2.0.0",
     "harvest": "^2.2.5",
-    "inquirer": "^6.2.2"
+    "inquirer": "^6.2.2",
+    "ramda": "^0.26.1",
+    "signale": "^1.4.0",
+    "yup": "^0.27.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
