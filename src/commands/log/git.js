@@ -2,10 +2,10 @@ import cli from 'cli-ux'
 import { number } from 'yup'
 import git from 'simple-git/promise'
 import emojic from 'emojic'
-import chalk from 'chalk'
 
 import { HarvestCommand } from '~lib/harvest'
 import { prompt, validator } from '~lib/prompt'
+import { edit } from '~lib/editor'
 
 const projectToChoice = value => ({
   name: value,
@@ -13,7 +13,6 @@ const projectToChoice = value => ({
 })
 
 const taskToChoice = value => ({ name: value, message: value.task.name })
-
 class LogGitCommand extends HarvestCommand {
   async run () {
     const {
@@ -25,28 +24,7 @@ class LogGitCommand extends HarvestCommand {
     const repo = git(process.cwd())
     const commits = (await repo.log({ from, to: to || 'HEAD' })).all
 
-    const messages = commits.map(({ message }) => message)
-    const notes = messages.join('\n')
-
-    this.log(
-      chalk.bold(
-        `You selected ${messages.length} commit messages to use as notes:`
-      ),
-      notes
-    )
-
-    const { confirm } = await prompt({
-      type: 'confirm',
-      name: 'confirm',
-      message: 'Does it look good to you?'
-    })
-
-    if (!confirm) {
-      this.log('Please, try again then!')
-      this.exit()
-    }
-
-    this.log('Ok, lets continue then')
+    const notes = await edit(commits.map(({ message }) => message).join('\n'))
 
     this.newLine()
 
