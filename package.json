@@ -33,7 +33,7 @@
     "prepublish": "yarn qa && yarn compile",
     "qa": "yarn test && yarn lint",
     "release": "yarn compile && standard-version",
-    "test": "echo 'No tests implemented yet'",
+    "test": "jest src",
     "version": "oclif-dev readme"
   },
   "lint-staged": {
