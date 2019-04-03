@@ -4,7 +4,7 @@ import { prompt as enquirerPrompt } from 'enquirer'
 const normalizeMessage = message =>
   typeof message === 'string' ? () => message : message
 
-const prefixMessage = message =>
+const indentMessage = message =>
   message ? (...args) => ' ' + message(...args) : message
 
 export const validator = schema => value =>
@@ -21,7 +21,7 @@ export const prompt = (question, ...args) => {
     []
       .concat(question)
       .map(over(lensProp('message'), normalizeMessage))
-      .map(over(lensProp('message'), prefixMessage)),
+      .map(over(lensProp('message'), indentMessage)),
     ...args
   )
 }
