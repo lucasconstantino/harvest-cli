@@ -1,5 +1,5 @@
 import fs from 'fs'
-import tmp from 'tmp'
+import mockedEnv from 'mocked-env'
 
 // const PATH_TO_CONFIG = (process.env.PATH_TO_CONFIG =
 //   '/tmp/some/controlled/path/.harvest-cli.json')
@@ -16,7 +16,11 @@ const config = {
 }
 
 describe('lib/config', () => {
+  let resetEnv
+
+  beforeAll(() => (resetEnv = mockedEnv({})))
   beforeAll(() => createConfigFile(config))
+  afterAll(() => resetEnv())
   beforeEach(jest.resetModules)
 
   describe('getConfig', () => {
