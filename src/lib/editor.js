@@ -24,13 +24,16 @@ export const edit = async notes => {
 
   return new Promise((resolve, reject) => {
     tmp.file((err, path, fd, cleanup) => {
+      /* istanbul ignore next */
       if (err) return reject(err)
 
       writeFile(path, notes, err => {
+        /* istanbul ignore next */
         if (err) return reject(err)
 
         spawn(editor, [path], { stdio: 'inherit' }).on('exit', (e, code) => {
           readFile(path, 'utf-8', (err, buf) => {
+            /* istanbul ignore next */
             if (err) return reject(err)
 
             const result = buf.toString()
