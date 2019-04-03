@@ -9,5 +9,12 @@
         "alias": { "~lib": "./src/lib", "~commands": "./src/commands" }
       }
     ]
-  ]
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "babel-plugin-rewire"
+      ]
+    }
+  }
 }
