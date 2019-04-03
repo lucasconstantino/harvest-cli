@@ -32,4 +32,36 @@ describe('lib/editor', () => {
       expect(await getEditor()).toBe('nano')
     })
   })
+
+  describe('edit', () => {
+    const childProcess = require('child_process')
+    const spawn = jest.fn((command, args, ...rest) => {
+      if (command !== 'my-editor') {
+        return childProcess.spawn(command, args, ...rest)
+      }
+
+      return { on: (event, callback) => callback() }
+    })
+
+    let resetEnv
+
+    beforeAll(() => (resetEnv = mockedEnv({ EDITOR: 'my-editor' })))
+
+    beforeEach(() =>
+      jest.doMock('child_process', () => ({ ...childProcess, spawn }))
+    )
+
+    afterEach(jest.clearAllMocks)
+    afterAll(() => resetEnv())
+
+    it('should spawn editor', async () => {
+      const { edit } = require('./editor')
+
+      expect(spawn).not.toHaveBeenCalled()
+      const result = await edit('some content')
+
+      expect(spawn).toHaveBeenCalled()
+      expect(result).toBe('some content')
+    })
+  })
 })
