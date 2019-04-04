@@ -67,7 +67,7 @@ class LogCreateCommand extends HarvestCommand {
   /* istanbul ignore next */
   getPrompts ({ projects }) {
     return [
-      ({
+      {
         type: 'select',
         pageSize: 20,
         name: 'project',
@@ -100,7 +100,7 @@ class LogCreateCommand extends HarvestCommand {
         type: 'input',
         name: 'notes',
         message: 'Notes (optional)'
-      })
+      }
     ]
   }
 }
