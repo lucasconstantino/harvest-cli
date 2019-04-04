@@ -23,6 +23,14 @@ const format = (arg, i) =>
  * Base Harvest connecting commands.
  */
 export class HarvestCommand extends Command {
+  constructor (...args) {
+    if (new.target === HarvestCommand) {
+      throw new TypeError('Cannot construct HarvestCommand instances directly')
+    }
+
+    super(...args)
+  }
+
   /* eslint-disable no-sequences */
   info = (...args) => (this.newLine(), log.info(...args.map(format)))
   log = (...args) => (this.newLine(), log.log(...args.map(format)))
@@ -33,8 +41,6 @@ export class HarvestCommand extends Command {
   newLine = () => console.log()
 
   async init () {
-    await super.init()
-
     let config = getConfig()
 
     if (!config) {
@@ -103,7 +109,7 @@ export class HarvestCommand extends Command {
       cli.action.stop('outch!')
 
       if (err.statusCode !== 401 || !err.error) {
-        this.error(err)
+        this.error(err.message)
         this.exit(1)
       }
 
