@@ -86,5 +86,36 @@ describe('commands/log', () => {
       expect(cli.action.start).toHaveBeenCalledWith('Logging entry')
       expect(cli.action.stop).toHaveBeenCalledWith('there it goes!')
     })
+
+    it('should exit when too many houts', async () => {
+      const project = projectAssignmentsResponse.project_assignments[0]
+      const task = project.task_assignments[0]
+
+      prompt
+        .mockReturnValueOnce({ project, task, hours: 10, notes: 'A note' })
+        .mockReturnValueOnce({ confirm: false })
+
+      nock('https://api.harvestapp.com/v2')
+        .get('/users/me/project_assignments')
+        .reply(200, projectAssignmentsResponse)
+
+      const command = new LogCreateCommand([], {})
+
+      await command.init()
+
+      try {
+        await command.run()
+      } catch (err) {
+        expect(err.message).toBe('EEXIT: 0')
+      }
+
+      expect(command.harvest).toBeInstanceOf(Harvest)
+      // expect(prompt).toHaveBeenCalledTimes(2)
+
+      expect(cli.action.start).toHaveBeenCalledWith(
+        'Loading your projects and tasks'
+      )
+      expect(cli.action.stop).toHaveBeenCalledWith('done!')
+    })
   })
 })
