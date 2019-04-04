@@ -125,9 +125,16 @@ export class HarvestCommand extends Command {
     return getConfig()
   }
 
-  loadProjects = () =>
-    this.harvest.projectAssignments
+  loadProjects = () => {
+    cli.action.start('Loading your projects and tasks')
+
+    const projects = this.harvest.projectAssignments
       .me()
       // eslint-disable-next-line camelcase
       .then(({ project_assignments }) => project_assignments)
+
+    cli.action.stop('done!')
+
+    return projects
+  }
 }

@@ -1,10 +1,11 @@
+/* eslint-disable camelcase */
 import Harvest from 'harvest'
 import nock from 'nock'
 import cli from 'cli-ux'
 
 import { createConfigFile } from '../../../tests/utils'
 import { prompt } from '~lib/prompt'
-import LogGitCommand, { __get__ } from './git'
+import LogGitCommand from './git'
 
 import { projectAssignmentsResponse } from './mocks/project-assignments'
 
@@ -58,45 +59,31 @@ const config = {
   user: { id: 1, first_name: 'Mocked' }
 }
 
-const projectToChoice = __get__('projectToChoice')
-const taskToChoice = __get__('taskToChoice')
-
 nock.disableNetConnect()
 
 describe('commands/git', () => {
   afterEach(jest.clearAllMocks)
   beforeAll(() => createConfigFile(config))
 
-  describe('projectToChoice', () => {
-    it('should transform from project object to prompt choice', () => {
-      const project = { project: { name: 'Project' } }
-
-      expect(projectToChoice(project)).toEqual({
-        name: project,
-        message: 'Project'
-      })
-    })
-  })
-
-  describe('taskToChoice', () => {
-    it('should transform from task object to prompt choice', () => {
-      const task = { task: { name: 'Task' } }
-      expect(taskToChoice(task)).toEqual({ name: task, message: 'Task' })
-    })
-  })
-
   describe('::run', () => {
     it('should log an entry based on git commit history', async () => {
       const project = projectAssignmentsResponse.project_assignments[0]
       const task = project.task_assignments[0]
 
+      prompt.mockReturnValueOnce({ project, task, hours: 3 })
+
       nock('https://api.harvestapp.com/v2')
         .get('/users/me/project_assignments')
         .reply(200, projectAssignmentsResponse)
-        .post('/time_entries')
+        .post(
+          '/time_entries',
+          ({ hours, project_id, task_id, notes }) =>
+            hours === 3 &&
+            project_id === project.project.id &&
+            task_id === task.task.id &&
+            notes === 'first\nsecond'
+        )
         .reply(200, {})
-
-      prompt.mockReturnValueOnce({ project, task, hours: 3 })
 
       const command = new LogGitCommand([], {})
 

@@ -14,15 +14,60 @@ const taskToChoice = value => ({ name: value, message: value.task.name })
 
 class LogCreateCommand extends HarvestCommand {
   async run () {
-    cli.action.start('Loading your projects and tasks')
-
     const projects = await this.loadProjects()
 
-    cli.action.stop('done!')
+    const { project, task, hours, notes } = await prompt(
+      this.getPrompts({ projects })
+    )
 
-    /* istanbul ignore next */
-    const { project, task, hours, notes } = await prompt([
-      {
+    await this.confirmData({ project, task, hours, notes })
+    await this.logEntry({ project, task, hours, notes })
+  }
+
+  async logEntry ({ project, task, hours, notes }) {
+    try {
+      cli.action.start('Logging entry')
+
+      await this.harvest.timeEntries.create({
+        hours,
+        notes,
+        project_id: project.project.id,
+        task_id: task.task.id,
+        spent_date: new Date().toISOString()
+      })
+
+      cli.action.stop('there it goes!')
+    } catch (err) /* istanbul ignore next */ {
+      cli.action.stop('oh, no!')
+
+      this.newLine()
+
+      this.error(err)
+    }
+  }
+
+  async confirmData ({ hours }) {
+    if (hours > 8) {
+      const { confirm } = await prompt({
+        type: 'confirm',
+        name: 'confirm',
+        message: `${
+          emojic.scream
+        }  You inserted ${hours} hours!!! Are you sure this is right?`
+      })
+
+      /* istanbul ignore else */
+      if (!confirm) {
+        this.log('Please, do it again then!')
+        this.exit()
+      }
+    }
+  }
+
+  /* istanbul ignore next */
+  getPrompts ({ projects }) {
+    return [
+      ({
         type: 'select',
         pageSize: 20,
         name: 'project',
@@ -55,44 +100,8 @@ class LogCreateCommand extends HarvestCommand {
         type: 'input',
         name: 'notes',
         message: 'Notes (optional)'
-      }
-    ])
-
-    if (hours > 8) {
-      const { confirm } = await prompt({
-        type: 'confirm',
-        name: 'confirm',
-        message: `${
-          emojic.scream
-        }  You inserted ${hours} hours!!! Are you sure this is right?`
       })
-
-      /* istanbul ignore else */
-      if (!confirm) {
-        this.log('Please, do it again then!')
-        this.exit()
-      }
-    }
-
-    try {
-      cli.action.start('Logging entry')
-
-      await this.harvest.timeEntries.create({
-        hours,
-        notes,
-        project_id: project.project.id,
-        task_id: task.task.id,
-        spent_date: new Date().toISOString()
-      })
-
-      cli.action.stop('there it goes!')
-    } catch (err) /* istanbul ignore next */ {
-      cli.action.stop('oh, no!')
-
-      this.newLine()
-
-      this.error(err)
-    }
+    ]
   }
 }
 
