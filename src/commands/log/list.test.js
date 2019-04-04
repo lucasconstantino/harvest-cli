@@ -3,7 +3,7 @@ import cli from 'cli-ux'
 
 import LogListCommand from './list'
 
-import { timeEntriesResponse } from './mocks/time-entries'
+import { timeEntriesResponse } from '../../mocks/time-entries'
 
 jest.mock('cli-ux', () => {
   const cli = {

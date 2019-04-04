@@ -7,7 +7,7 @@ import { createConfigFile } from '../../../tests/utils'
 import { prompt } from '~lib/prompt'
 import LogGitCommand from './git'
 
-import { projectAssignmentsResponse } from './mocks/project-assignments'
+import { projectAssignmentsResponse } from '../../mocks/project-assignments'
 
 jest.mock('cli-ux', () => ({
   action: {
