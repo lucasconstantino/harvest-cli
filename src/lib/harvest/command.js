@@ -17,7 +17,7 @@ const indent = (i, text) =>
     .join('\n')
 
 const format = (arg, i) =>
-  typeof arg === 'string' ? prefix(i) + indent(i, arg) : indent(i, arg)
+  typeof arg === 'string' ? prefix(i) + indent(i, arg) : arg
 
 /**
  * Base Harvest connecting commands.
@@ -105,7 +105,7 @@ export class HarvestCommand extends Command {
       this.log(chalk.bold(`Hello, ${user.first_name}! You are connected ;)`))
 
       saveConfig({ access, user })
-    } catch (err) {
+    } catch (err) /* istanbul ignore next */ {
       cli.action.stop('outch!')
 
       if (err.statusCode !== 401 || !err.error) {

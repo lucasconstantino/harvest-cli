@@ -5,7 +5,7 @@ import cli from 'cli-ux'
 import { createConfigFile } from '../../../tests/utils'
 import { prompt } from '../prompt'
 import { getConfig } from '../config'
-import { HarvestCommand } from './command'
+import { HarvestCommand, __get__ } from './command'
 
 jest.mock('cli-ux', () => ({
   action: {
@@ -59,6 +59,10 @@ const config = {
   user: { id: 1, first_name: 'Mocked' }
 }
 
+const prefix = __get__('prefix')
+const indent = __get__('indent')
+const format = __get__('format')
+
 nock.disableNetConnect()
 
 describe('lig/harvest/command', () => {
@@ -69,6 +73,33 @@ describe('lig/harvest/command', () => {
     expect(() => new HarvestCommand()).toThrowError(
       'Cannot construct HarvestCommand instances directly'
     )
+  })
+
+  describe('prefix', () => {
+    it('should prefix based on message index', () => {
+      expect(prefix(0)).toBe('')
+      expect(prefix(1)).toBe('\n\n')
+      expect(prefix(2)).toBe('\n')
+      expect(prefix(3)).toBe('\n')
+    })
+  })
+
+  describe('indent', () => {
+    it('should indent based on text index', () => {
+      expect(indent(0, 'message')).toBe('message')
+      expect(indent(1, 'message')).toBe('   message')
+      expect(indent(2, 'message')).toBe('   message')
+      expect(indent(3, 'message')).toBe('   message')
+    })
+  })
+
+  describe('format', () => {
+    it('should format logging messages', () => {
+      expect(format('message', 0)).toBe('message')
+      expect(format('message', 1)).toBe('\n\n   message')
+      expect(format('message', 2)).toBe('\n   message')
+      expect(format({ message: 'value' }, 0)).toEqual({ message: 'value' })
+    })
   })
 
   describe('::init', () => {
