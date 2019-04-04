@@ -2,7 +2,7 @@
 import { flags } from '@oclif/command'
 import cli from 'cli-ux'
 
-import { HarvestCommand } from '~lib/harvest'
+import { HarvestCommand } from '~lib/harvest/command'
 
 class LogListCommand extends HarvestCommand {
   loadTimeEntries = query => this.harvest.timeEntries.list(query)
@@ -20,6 +20,7 @@ class LogListCommand extends HarvestCommand {
 
     this.newLine()
 
+    /* istanbul ignore next */
     cli.table(
       time_entries,
       {
