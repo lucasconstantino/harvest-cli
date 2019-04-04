@@ -1,17 +1,19 @@
 import { homedir } from 'os'
 import { writeFileSync } from 'fs'
 import { resolve } from 'path'
+import tmp from 'tmp'
 
 import logger from './logger'
 
-const log = logger.scope('Config')
-
 const PATH_TO_CONFIG = process.env.PATH_TO_CONFIG
   ? resolve(process.cwd(), process.env.PATH_TO_CONFIG)
-  : resolve(homedir(), './.harvest-cli.json')
+  : process.env.NODE_ENV !== 'production'
+    ? tmp.fileSync().name
+    : resolve(homedir(), './.harvest-cli.json')
 
 // singleton to void multiple runs to the file-system.
 let CONFIG = null
+const log = logger.scope('Config')
 
 export const getConfig = () => {
   if (!CONFIG) {
