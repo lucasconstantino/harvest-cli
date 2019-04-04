@@ -3,7 +3,7 @@ import { number } from 'yup'
 import git from 'simple-git/promise'
 import emojic from 'emojic'
 
-import { HarvestCommand } from '~lib/harvest'
+import { HarvestCommand } from '~lib/harvest/command'
 import { prompt, validator } from '~lib/prompt'
 import { edit } from '~lib/editor'
 
