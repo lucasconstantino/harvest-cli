@@ -20,6 +20,7 @@ class LogCreateCommand extends HarvestCommand {
 
     cli.action.stop('done!')
 
+    /* istanbul ignore next */
     const { project, task, hours, notes } = await prompt([
       {
         type: 'select',
@@ -66,6 +67,7 @@ class LogCreateCommand extends HarvestCommand {
         }  You inserted ${hours} hours!!! Are you sure this is right?`
       })
 
+      /* istanbul ignore else */
       if (!confirm) {
         this.log('Please, do it again then!')
         this.exit()
@@ -84,7 +86,7 @@ class LogCreateCommand extends HarvestCommand {
       })
 
       cli.action.stop('there it goes!')
-    } catch (err) {
+    } catch (err) /* istanbul ignore next */ {
       cli.action.stop('oh, no!')
 
       this.newLine()

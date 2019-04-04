@@ -4,8 +4,7 @@ import cli from 'cli-ux'
 
 import { createConfigFile } from '../../../tests/utils'
 import { prompt } from '~lib/prompt'
-import { getConfig } from '~lib/config'
-import LogCreateCommand from './index'
+import LogCreateCommand, { __get__ } from './index'
 
 import { projectAssignmentsResponse } from './mocks/project-assignments'
 
@@ -51,11 +50,32 @@ const config = {
   user: { id: 1, first_name: 'Mocked' }
 }
 
+const projectToChoice = __get__('projectToChoice')
+const taskToChoice = __get__('taskToChoice')
+
 nock.disableNetConnect()
 
 describe('commands/log', () => {
   afterEach(jest.clearAllMocks)
   beforeAll(() => createConfigFile(config))
+
+  describe('projectToChoice', () => {
+    it('should transform from project object to prompt choice', () => {
+      const project = { project: { name: 'Project' } }
+
+      expect(projectToChoice(project)).toEqual({
+        name: project,
+        message: 'Project'
+      })
+    })
+  })
+
+  describe('taskToChoice', () => {
+    it('should transform from task object to prompt choice', () => {
+      const task = { task: { name: 'Task' } }
+      expect(taskToChoice(task)).toEqual({ name: task, message: 'Task' })
+    })
+  })
 
   describe('::run', () => {
     it('should log an entry', async () => {
