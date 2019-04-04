@@ -22,6 +22,8 @@ jest.mock('cli-ux', () => {
 nock.disableNetConnect()
 
 describe('commands/log/list', () => {
+  afterEach(jest.clearAllMocks)
+
   describe('::run', () => {
     it('should show time entries in a table format', async () => {
       const command = new LogListCommand([], {})

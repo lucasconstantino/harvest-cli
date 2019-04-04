@@ -66,7 +66,7 @@ const format = __get__('format')
 nock.disableNetConnect()
 
 describe('lig/harvest/command', () => {
-  beforeEach(jest.clearAllMocks)
+  afterEach(jest.clearAllMocks)
   beforeAll(() => createConfigFile(config))
 
   it('should NOT be possible to instantiate a Harvest command directly', () => {
