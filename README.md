@@ -7,7 +7,7 @@ Unofficial Harvest CLI focused on time-tracking creation.
 [![Downloads/week](https://img.shields.io/npm/dw/harvest-cli.svg)](https://npmjs.org/package/harvest-cli)
 [![License](https://img.shields.io/npm/l/harvest-cli.svg)](https://github.com/lucasconstantino/harvest-cli/blob/master/package.json)
 [![Build Status](https://travis-ci.org/TallerWebSolutions/apollo-cache-instorage.svg?branch=master)](https://travis-ci.org/TallerWebSolutions/apollo-cache-instorage)
-[![coverage](https://img.shields.io/codecov/c/github/TallerWebSolutions/apollo-cache-instorage.svg?style=flat-square)](https://codecov.io/github/TallerWebSolutions/apollo-cache-instorage)
+[![coverage](https://img.shields.io/codecov/c/github/TallerWebSolutions/apollo-cache-instorage.svg?style=flat-square)](https://codecov.io/github/TallerWebSolutions/apollo-cache-instorage) [![Greenkeeper badge](https://badges.greenkeeper.io/lucasconstantino/harvest-cli.svg)](https://greenkeeper.io/)
 
 <!-- toc -->
 
