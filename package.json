@@ -64,7 +64,7 @@
   "dependencies": {
     "@oclif/command": "^1",
     "@oclif/config": "^1.12.12",
-    "@oclif/plugin-help": "^2.1.6",
+    "@oclif/plugin-help": "^3.0.0",
     "chalk": "^2.4.2",
     "cli-ux": "^5.2.1",
     "emojic": "^1.1.15",
