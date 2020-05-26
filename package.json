@@ -101,7 +101,7 @@
     "nock": "^10.0.6",
     "prettier-eslint-cli": "^4.7.1",
     "rewire": "^4.0.1",
-    "sort-package-json": "^1.19.0",
+    "sort-package-json": "^1.42.3",
     "standard-version": "^5.0.1"
   },
   "engines": {
