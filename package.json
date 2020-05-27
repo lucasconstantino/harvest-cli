@@ -76,7 +76,7 @@
     "signale": "^1.4.0",
     "simple-git": "^1.110.0",
     "tmp": "^0.1.0",
-    "yup": "^0.27.0"
+    "yup": "^0.29.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
